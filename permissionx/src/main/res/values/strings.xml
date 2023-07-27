@@ -7,4 +7,12 @@
     <string name="permissionx_request_install_packages">Install unknown apps</string>
     <string name="permissionx_post_notification">Notifications</string>
     <string name="permissionx_body_sensor_background">Background body sensors</string>
+
+    <string name="permission_toast_while_denied">"%s" does not have access to %s.</string>
+    <string name="permission_tip_while_denied">"%s" does not have access to %s. Certain features may be unavailable. Please go to settings and allow access.</string>
+    <string name="permission_tip_deny">Deny</string>
+    <string name="permission_tip_grant">Grabt</string>
+    <string name="permission_tip_cancel">Cancel</string>
+    <string name="permission_tip_set_now">Set Now</string>
+    <string name="permission_request_top_tip_title">%sPermission authority instruction</string>
 </resources>

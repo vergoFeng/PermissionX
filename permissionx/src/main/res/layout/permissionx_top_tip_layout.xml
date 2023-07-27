@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_top_tip_permission_request_top_tip"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/permission_lmh_permission_request_top_tip"
+    android:layout_marginTop="@dimen/permission_lmv_permission_request_top_tip"
+    android:background="@drawable/permissionx_top_tip_bg"
+    android:elevation="4dp"
+    android:paddingHorizontal="@dimen/permission_ph_permission_request_top_tip"
+    android:paddingVertical="@dimen/permission_pv_permission_request_top_tip"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/tv_tip_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:textColor="@color/permission_tc_permission_request_top_tip_title"
+        android:textSize="@dimen/permission_ts_permission_request_top_tip_title"
+        app:layout_constraintBottom_toTopOf="@id/tv_tip_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/permission_request_top_tip_title"/>
+
+    <TextView
+        android:id="@+id/tv_tip_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/permission_tc_permission_request_top_tip_content"
+        android:textSize="@dimen/permission_ts_permission_request_top_tip_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tip_title"
+        tools:text="用于XXX。" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

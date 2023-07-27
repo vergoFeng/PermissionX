@@ -7,4 +7,12 @@
     <string name="permissionx_request_install_packages">安装未知应用</string>
     <string name="permissionx_post_notification">通知</string>
     <string name="permissionx_body_sensor_background">后台访问身体传感器</string>
+
+    <string name="permission_toast_while_denied">你已禁止授予%s %s 权限</string>
+    <string name="permission_tip_while_denied">你已禁止授予%s %s 权限，可能会造成功能不可用，如需使用请到设置里授予权限</string>
+    <string name="permission_tip_deny">禁止</string>
+    <string name="permission_tip_grant">授予</string>
+    <string name="permission_tip_cancel">取消</string>
+    <string name="permission_tip_set_now">前往设置</string>
+    <string name="permission_request_top_tip_title">%s权限使用说明</string>
 </resources>
