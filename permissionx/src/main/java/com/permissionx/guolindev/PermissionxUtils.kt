@@ -23,6 +23,9 @@ class PermissionxUtils {
     private var permissions: List<String>? = null
     private var descriptions: List<String>? = null
 
+    val targetSdkVersion: Int
+        get() = activity.applicationInfo.targetSdkVersion
+
     private val fragmentManager: FragmentManager
         get() {
             return fragment?.childFragmentManager ?: activity.supportFragmentManager
@@ -60,7 +63,7 @@ class PermissionxUtils {
         return this
     }
 
-    fun request(callback: (Boolean) -> Unit) {
+    fun request(callback: ((Boolean) -> Unit)?) {
         requestCallback = callback
         if(permissions.isNullOrEmpty() || descriptions.isNullOrEmpty()) {
             requestCallback?.invoke(false)
