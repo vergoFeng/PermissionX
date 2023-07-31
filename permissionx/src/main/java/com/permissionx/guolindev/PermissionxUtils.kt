@@ -75,7 +75,7 @@ class PermissionxUtils {
     fun removeRequestFragment() {
         val existedFragment = fragmentManager.findFragmentByTag(REQUEST_FRAGMENT)
         if (existedFragment != null) {
-            fragmentManager.beginTransaction().remove(existedFragment).commitNowAllowingStateLoss()
+            fragmentManager.beginTransaction().remove(existedFragment).commit()
         }
     }
 

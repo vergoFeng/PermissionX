@@ -88,7 +88,9 @@ class InvisibleRequestFragment : Fragment() {
      */
     private val forwardToSettingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            requestAgain()
+            if (checkForGC()) {
+                requestAgain()
+            }
         }
 
     /**
