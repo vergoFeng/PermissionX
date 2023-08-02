@@ -2,13 +2,16 @@ package com.permissionx.guolindev.request
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
@@ -55,6 +58,9 @@ class InvisibleRequestFragment : Fragment() {
     // 未授予的普通权限使用说明
     private var deniedDescriptions: MutableMap<String, String> = HashMap()
 
+    // 特殊权限的使用说明
+    private var specialDescriptions: MutableMap<String, String> = HashMap()
+
     // 已同意的权限列表
     private var grantedPermissions: MutableList<String> = ArrayList()
 
@@ -72,6 +78,8 @@ class InvisibleRequestFragment : Fragment() {
 
     // 权限名称临时缓存，用于过滤多个权限在同一权限组重复展示
     private val tempSet = HashSet<String>()
+
+    private lateinit var sp: SharedPreferences
 
     /**
      * Used to get the result for request multiple permissions.
@@ -163,6 +171,11 @@ class InvisibleRequestFragment : Fragment() {
             }
         }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sp = requireActivity().getSharedPreferences("permissionx", Context.MODE_PRIVATE)
+    }
+
     fun requestNow(
         manager: PermissionxUtils,
         permissions: List<String>,
@@ -208,9 +221,15 @@ class InvisibleRequestFragment : Fragment() {
         permissions?.forEachIndexed { i, permission ->
             if (permission in allSpecialPermissions) {
                 specicalPermissionsIsGranted(permission)
+                descriptions?.takeIf {
+                    i < it.size
+                }?.let {
+                    specialDescriptions.put(permission, it[i])
+                }
             } else if (!PermissionX.isGranted(requireActivity(), permission)) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), permission)) {
                     deniedPermissions.add(permission)
+                    sp.edit().putBoolean(permission, true).apply()
                 } else {
                     deniedNotPromptPermissions.add(permission)
                 }
@@ -296,11 +315,7 @@ class InvisibleRequestFragment : Fragment() {
     private fun showRequestSpecialPermissionDialog(permission: String) {
         AlertDialog.Builder(requireActivity())
             .setMessage(
-                getString(
-                    R.string.permission_tip_special,
-                    getAppName(),
-                    getPermissionName(permission)
-                )
+                specialDescriptions[permission]
             )
             .setPositiveButton(
                 getString(R.string.permission_tip_open)
@@ -527,7 +542,21 @@ class InvisibleRequestFragment : Fragment() {
             permissionManager.removeRequestFragment()
         } else if(deniedNotPromptPermissions.isNotEmpty()) {
             isShowTips = false
-            showForwardToSettingsDialog(deniedNotPromptPermissions)
+//            showForwardToSettingsDialog(deniedNotPromptPermissions)
+            val continueRequestPermissions: MutableList<String> = ArrayList()
+            deniedNotPromptPermissions.forEach {
+                if(sp.contains(it)) {
+                    sp.edit().remove(it).apply()
+                } else {
+                    continueRequestPermissions.add(it)
+                }
+            }
+            if(continueRequestPermissions.isNotEmpty()) {
+                showForwardToSettingsDialog(continueRequestPermissions)
+            } else {
+                showPermissionDeniedToast(deniedNotPromptPermissions+deniedPermissions)
+                permissionManager.requestCallback?.invoke(false)
+            }
         } else {
             showPermissionDeniedToast(deniedPermissions)
             permissionManager.requestCallback?.invoke(false)

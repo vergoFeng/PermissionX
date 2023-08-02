@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="permission_lmh_permission_request_top_tip">16dp</dimen>
-    <dimen name="permission_lmv_permission_request_top_tip">16dp</dimen>
-    <dimen name="permission_ph_permission_request_top_tip">18dp</dimen>
-    <dimen name="permission_pv_permission_request_top_tip">14dp</dimen>
-    <dimen name="permission_radius_bg_permission_request_top_tip">6dp</dimen>
+    <dimen name="permission_lmh_permission_request_top_tip">12dp</dimen>
+    <dimen name="permission_lmv_permission_request_top_tip">12dp</dimen>
+    <dimen name="permission_ph_permission_request_top_tip">16dp</dimen>
+    <dimen name="permission_pv_permission_request_top_tip">12dp</dimen>
+    <dimen name="permission_radius_bg_permission_request_top_tip">8dp</dimen>
 
     <dimen name="permission_ts_permission_request_top_tip_title">17sp</dimen>
     <dimen name="permission_ts_permission_request_top_tip_content">14sp</dimen>

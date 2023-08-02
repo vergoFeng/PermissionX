@@ -10,7 +10,6 @@
 
     <string name="permission_toast_while_denied">你已禁止授予%s %s 权限</string>
     <string name="permission_tip_while_denied">你已禁止授予%s %s 权限，可能会造成功能不可用，如需使用请到设置里授予权限</string>
-    <string name="permission_tip_special">你的手机未授予%s %s 权限，可能会造成功能不可用，如需使用请到设置里授予权限</string>
     <string name="permission_tip_deny">禁止</string>
     <string name="permission_tip_grant">授予</string>
     <string name="permission_tip_cancel">取消</string>

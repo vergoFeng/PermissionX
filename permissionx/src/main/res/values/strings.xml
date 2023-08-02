@@ -10,7 +10,6 @@
 
     <string name="permission_toast_while_denied">You have prohibited granting %s permission to %s.</string>
     <string name="permission_tip_while_denied">You have prohibited granting %s permission to %s. Certain features may be unavailable. Please go to settings and allow access.</string>
-    <string name="permission_tip_special">You phone has not been granted %s %s permission. Certain features may be unavailable. Please go to settings and allow access.</string>
     <string name="permission_tip_deny">Deny</string>
     <string name="permission_tip_grant">Grabt</string>
     <string name="permission_tip_cancel">Cancel</string>
